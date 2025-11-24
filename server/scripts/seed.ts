@@ -1,18 +1,10 @@
 import { db } from '../src/lib/db';
 
 const defaults = [
-  { name: 'Driver', claimed_distance: null },
-  { name: 'Wood 3', claimed_distance: null },
-  { name: 'Wood 5', claimed_distance: null },
-  { name: 'Iron 4', claimed_distance: null },
-  { name: 'Iron 5', claimed_distance: null },
-  { name: 'Iron 6', claimed_distance: null },
-  { name: 'Iron 7', claimed_distance: null },
-  { name: 'Iron 8', claimed_distance: null },
-  { name: 'Iron 9', claimed_distance: null },
-  { name: 'Wedge 52°', claimed_distance: null },
-  { name: 'Wedge 56°', claimed_distance: null },
-  { name: 'Wedge 60°', claimed_distance: null }
+  { name: 'Driver', claimed_distance: 250 },
+  { name: '4 Hybrid', claimed_distance: 210 },
+  { name: '7 Iron', claimed_distance: 160 },
+  { name: 'Pitching Wedge', claimed_distance: 110 }
 ];
 
 for (const club of defaults) {

@@ -21,6 +21,7 @@ export const RoundPage = () => {
     selectedHole,
     setSelectedHole,
     updateHoleLocal,
+    isSaving,
     setSaving
   } = useRoundStore((state) => ({
     setCurrentRoundId: state.setCurrentRoundId,
@@ -29,6 +30,7 @@ export const RoundPage = () => {
     selectedHole: state.selectedHole,
     setSelectedHole: state.setSelectedHole,
     updateHoleLocal: state.updateHoleLocal,
+    isSaving: state.isSaving,
     setSaving: state.setSaving
   }));
 
@@ -106,13 +108,7 @@ export const RoundPage = () => {
   }, [selectedHole, setSelectedHole]);
 
   const handlePrev = () => setSelectedHole(Math.max(1, selectedHole - 1));
-  const handleNext = () => {
-    if (selectedHole === 18) {
-      navigate(`/summary/${round?.id ?? roundId}`);
-      return;
-    }
-    setSelectedHole(Math.min(18, selectedHole + 1));
-  };
+  const handleNext = () => setSelectedHole(Math.min(18, selectedHole + 1));
 
   return (
     <div className="flex flex-col gap-6 pb-24">
@@ -179,15 +175,15 @@ export const RoundPage = () => {
       )}
 
       <BottomActionBar>
-        <Button variant="ghost" onClick={() => navigate('/')}>Back</Button>
-        <div className="flex flex-1 justify-end gap-2">
-          <Button variant="ghost" onClick={handlePrev} disabled={selectedHole === 1}>
-            Prev hole
-          </Button>
-          <Button onClick={handleNext}>
-            {selectedHole === 18 ? 'End round' : 'Next hole'}
-          </Button>
-        </div>
+        <Button variant="ghost" onClick={handlePrev} disabled={selectedHole === 1}>
+          Prev hole
+        </Button>
+        <Button variant="primary" subtle onClick={() => persistHole()} disabled={isSaving}>
+          {isSaving ? 'Saving…' : 'Save'}
+        </Button>
+        <Button onClick={handleNext} disabled={selectedHole === 18}>
+          Next hole
+        </Button>
       </BottomActionBar>
     </div>
   );

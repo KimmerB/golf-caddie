@@ -1,7 +1,7 @@
 export type Club = {
   id: number;
   name: string;
-  claimedDistance: number | null;
+  claimedDistance: number;
   createdAt: string;
 };
 

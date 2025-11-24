@@ -1,7 +1,7 @@
 export type ClubRow = {
   id: number;
   name: string;
-  claimed_distance: number | null;
+  claimed_distance: number;
   created_at: string;
 };
 

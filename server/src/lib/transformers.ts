@@ -3,7 +3,7 @@ import { HoleRow, RoundRow, ClubRow } from '../types';
 export const mapClub = (row: ClubRow) => ({
   id: row.id,
   name: row.name,
-  claimedDistance: row.claimed_distance ?? null,
+  claimedDistance: row.claimed_distance,
   createdAt: row.created_at
 });
 
